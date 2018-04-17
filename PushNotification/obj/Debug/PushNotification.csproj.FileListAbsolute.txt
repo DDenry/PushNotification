@@ -1,0 +1,10 @@
+D:\Project\Code\PushNotification\PushNotification\bin\Debug\PushNotification.exe.config
+D:\Project\Code\PushNotification\PushNotification\bin\Debug\PushNotification.exe
+D:\Project\Code\PushNotification\PushNotification\bin\Debug\PushNotification.pdb
+D:\Project\Code\PushNotification\PushNotification\obj\Debug\PushNotification.csprojResolveAssemblyReference.cache
+D:\Project\Code\PushNotification\PushNotification\obj\Debug\PushNotification.Form1.resources
+D:\Project\Code\PushNotification\PushNotification\obj\Debug\PushNotification.Properties.Resources.resources
+D:\Project\Code\PushNotification\PushNotification\obj\Debug\PushNotification.csproj.GenerateResource.cache
+D:\Project\Code\PushNotification\PushNotification\obj\Debug\PushNotification.csproj.CoreCompileInputs.cache
+D:\Project\Code\PushNotification\PushNotification\obj\Debug\PushNotification.exe
+D:\Project\Code\PushNotification\PushNotification\obj\Debug\PushNotification.pdb
