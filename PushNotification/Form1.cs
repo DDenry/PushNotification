@@ -14,6 +14,7 @@ namespace PushNotification
     public partial class Form1 : Form
     {
         private string path;
+        protected int count;
         public Form1()
         {
             InitializeComponent();
@@ -38,11 +39,70 @@ namespace PushNotification
             {
                 FileInfo _file = new FileInfo(file);
                 //file就是单个文件路径
-                if (_file.Name.Equals("Notification.txt")) {
+                if (_file.Name.Equals("Notification.txt"))
+                {
                     path = _file.FullName;
+                    //
+                    GetNotificationList();
                     groupBox.Visible = false;
                 }
                 else Console.WriteLine(_file.Name);
+            }
+        }
+
+        private void GetNotificationList()
+        {
+            //
+            content.Text = "";
+            StreamReader streamReader = new StreamReader(path);
+            String line = "";
+            while (!String.IsNullOrEmpty(line = streamReader.ReadLine()))
+            {
+                if (!String.IsNullOrEmpty(content.Text)) content.Text += "\n";
+                content.Text += line;
+            }
+            streamReader.Close();
+            streamReader.Dispose();
+        }
+
+        private void NotificationLIstChanged(object sender, EventArgs e)
+        {
+            //
+            count = content.Text.Split('\n').Length;
+            NotificationCount.Text = "Total Message:" + count;
+        }
+
+        private void PublishNotification(object sender, EventArgs e)
+        {
+            String message = "";
+            switch (NotificationType.SelectedIndex)
+            {
+                case 0:
+                    if (!String.IsNullOrEmpty(AudioMessage.Text.Trim()))
+                    {
+                        message = count + 1 + "[0,<>," + DateTime.Now + ",]" + AudioMessage.Text.Trim();
+                    }
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
+            //
+            if (!String.IsNullOrEmpty(message))
+            {
+                StreamWriter streamWriter = new StreamWriter(path, true, Encoding.UTF8);
+                streamWriter.Write(message + "\r\n");
+                streamWriter.Close();
+                streamWriter.Dispose();
+                //
+                GetNotificationList();
+
+                //发布成功
+                AudioMessage.Text = "";
+                Log.Text = "已成功发布一条消息!";
             }
         }
     }
