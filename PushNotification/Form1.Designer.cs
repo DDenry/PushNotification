@@ -92,7 +92,7 @@
             this.Alert.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Alert.Location = new System.Drawing.Point(4, 29);
             this.Alert.Name = "Alert";
-            this.Alert.Size = new System.Drawing.Size(342, 128);
+            this.Alert.Size = new System.Drawing.Size(342, 123);
             this.Alert.TabIndex = 4;
             this.Alert.Text = "Alert";
             this.Alert.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             this.Activity.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Activity.Location = new System.Drawing.Point(4, 29);
             this.Activity.Name = "Activity";
-            this.Activity.Size = new System.Drawing.Size(342, 128);
+            this.Activity.Size = new System.Drawing.Size(342, 123);
             this.Activity.TabIndex = 3;
             this.Activity.Text = "Activity";
             this.Activity.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             this.WebView.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.WebView.Location = new System.Drawing.Point(4, 29);
             this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(342, 128);
+            this.WebView.Size = new System.Drawing.Size(342, 123);
             this.WebView.TabIndex = 1;
             this.WebView.Text = "WebView";
             this.WebView.UseVisualStyleBackColor = true;
@@ -167,6 +167,7 @@
             this.content.TabIndex = 1;
             this.content.Text = "";
             this.content.TextChanged += new System.EventHandler(this.NotificationLIstChanged);
+            this.content.DoubleClick += new System.EventHandler(this.content_DoubleClick);
             // 
             // NotificationCount
             // 
@@ -182,6 +183,7 @@
             // Log
             // 
             this.Log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Log.ForeColor = System.Drawing.Color.DarkRed;
             this.Log.Location = new System.Drawing.Point(350, 0);
             this.Log.Name = "Log";
             this.Log.Size = new System.Drawing.Size(834, 30);

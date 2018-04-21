@@ -63,24 +63,29 @@ namespace PushNotification
             }
             streamReader.Close();
             streamReader.Dispose();
+            count = content.Lines.Length;
         }
 
         private void NotificationLIstChanged(object sender, EventArgs e)
         {
             //
-            count = content.Text.Split('\n').Length;
-            NotificationCount.Text = "Total Message:" + count;
+            NotificationCount.Text = "Total Message:" + content.Text.Split('\n').Length;
         }
 
         private void PublishNotification(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(path))
+            {
+                MessageBox.Show("Please drag file in above first!", "SystemInfo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             String message = "";
             switch (NotificationType.SelectedIndex)
             {
                 case 0:
                     if (!String.IsNullOrEmpty(AudioMessage.Text.Trim()))
                     {
-                        message = count + 1 + "[0,<>," + DateTime.Now + ",]" + AudioMessage.Text.Trim();
+                        message = File.ReadLines(path).ToArray().Count() + 1 + "[0,<>," + DateTime.Now + ",]" + AudioMessage.Text.Trim();
                     }
                     break;
                 case 1:
@@ -104,6 +109,11 @@ namespace PushNotification
                 AudioMessage.Text = "";
                 Log.Text = "已成功发布一条消息!";
             }
+        }
+
+        private void content_DoubleClick(object sender, EventArgs e)
+        {
+            GetNotificationList();
         }
     }
 }
