@@ -79,26 +79,35 @@ namespace PushNotification
                 MessageBox.Show("Please drag file in above first!", "SystemInfo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            String type = "";
             String message = "";
             switch (NotificationType.SelectedIndex)
             {
+                //Audio Notification
                 case 0:
                     if (!String.IsNullOrEmpty(AudioMessage.Text.Trim()))
                     {
                         message = File.ReadLines(path).ToArray().Count() + 1 + "[0,<>," + DateTime.Now + ",]" + AudioMessage.Text.Trim();
+                        type = "Audio";
                     }
                     break;
+                //Alert Notification
                 case 1:
+                    type = "Alert";
                     break;
+                //Activity Notification
                 case 2:
+                    type = "Activity";
                     break;
+                //WebView Notification
                 case 3:
+                    type = "WebView";
                     break;
             }
             //
             if (!String.IsNullOrEmpty(message))
             {
-                StreamWriter streamWriter = new StreamWriter(path, true, Encoding.UTF8);
+                StreamWriter streamWriter = new StreamWriter(path, true, new UTF8Encoding(false));
                 streamWriter.Write(message + "\r\n");
                 streamWriter.Close();
                 streamWriter.Dispose();
@@ -107,7 +116,7 @@ namespace PushNotification
 
                 //发布成功
                 AudioMessage.Text = "";
-                Log.Text = "已成功发布一条消息!";
+                Log.Text = "已成功发布一条" + type + "消息!";
             }
         }
 
